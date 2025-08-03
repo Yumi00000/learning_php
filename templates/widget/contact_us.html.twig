@@ -11,14 +11,13 @@
                         {{ successMessage }}
                     </div>
                 {% else %}
-                    {{ form_start(form, {method:'POST', action: path('app_contact_us')}) }}
+                    {{ form_start(form, {method: 'POST', action: path('app_contact_us')}) }}
                     {{ form_errors(form) }}
                     <div class="mb-3">
                         {{ form_row(form.name, {'label': 'Name', 'attr': {'class': 'form-control', 'id': 'recipient-name'}}) }}
                     </div>
                     <div class="mb-3">
                         {{ form_row(form.email, {'label': 'Email', 'attr': {'class': 'form-control', 'id': 'recipient-email'}}) }}
-
                     </div>
                     <div class="mb-3">
                         {{ form_row(form.subject, {'label': 'Subject', 'attr': {'class': 'form-control', 'id': 'recipient-subject'}}) }}
@@ -26,6 +25,7 @@
                     <div class="mb-3">
                         {{ form_row(form.message, {'label': 'Message', 'attr': {'class': 'form-control', 'id': 'recipient-message'}}) }}
                     </div>
+                    {{ form_rest(form) }} 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Send message</button>
