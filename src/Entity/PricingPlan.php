@@ -26,7 +26,7 @@ class PricingPlan
     /**
      * @var Collection<int, PricingPlanBenefit>
      */
-    #[ORM\OneToMany(targetEntity: PricingPlanBenefit::class, mappedBy: 'pricingPlan')]
+    #[ORM\OneToMany(targetEntity: PricingPlanBenefit::class, mappedBy: 'pricingPlan', orphanRemoval: true)]
     private Collection $benefits;
 
     /**
@@ -116,15 +116,21 @@ class PricingPlan
 
         return $this;
     }
+
     public function hasFeature(PricingPlanFeature $feature): bool
-        {
-            return $this->features->contains($feature);
-        }
+    {
+        return $this->features->contains($feature);
+    }
 
     public function removeFeature(PricingPlanFeature $feature): static
     {
         $this->features->removeElement($feature);
 
         return $this;
+    }
+
+    public function toString(): string
+    {
+        return $this->name;
     }
 }

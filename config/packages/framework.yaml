@@ -10,6 +10,11 @@ framework:
 
 when@test:
     framework:
-        test: true
         session:
-            storage_factory_id: session.storage.factory.mock_file
+            handler_id: null # Or Redis, database, etc.
+            cookie_secure: true # For HTTPS
+            cookie_samesite: lax
+            cookie_domain: null # Set to your domain if not 127.0.0.1
+            gc_maxlifetime: 3600
+        csrf_protection:
+            enabled: true
